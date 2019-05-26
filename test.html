@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Add Rows To HTML Table From Array </title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <table id="table" border="1">
+            
+            <!-- The Row Number 0 -->
+            <tr>
+               
+            </tr>
+
+        </table>
+        
+        <script>
+
+var ArrayFileName = ['h', 'r', 'i', 's','t', 'o', 'f', 'o', 'h'];
+var ArrayFileNameWExt = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var FinalArray = [];
+
+var unique = [...new Set(ArrayFileName)];
+for (var i = 0; i < ArrayFileNameWExt.length; ++i) {
+    var temp = ArrayFileNameWExt[i];
+    var found = false;
+    
+    for (var j = 0; j < ArrayFileName.length; ++j) {
+        if (ArrayFileName[j] === temp[0]) {
+            found = true;
+            break;
+        }
+    }
+    
+    if (!found) {
+      FinalArray = unique;
+        FinalArray.push(ArrayFileNameWExt[i]);
+    }
+}
+
+console.log(FinalArray);
+
+function chunkArray(myArray, chunk_size){
+    var results = [];
+    
+    while (myArray.length) {
+        results.push(myArray.splice(0, chunk_size));
+    }
+    
+    return results;
+}
+
+// Split in group of 3 items
+var result = chunkArray(FinalArray, 5);
+// Outputs : [ [1,2,3] , [4,5,6] ,[7,8] ]
+console.log(result);
+            
+            var 
+                table = document.getElementById("table");
+       
+           
+           for(var i = 0; i < result.length; i++)
+           {
+               // create a new row
+               var newRow = table.insertRow(table.length);
+               for(var j = 0; j < result[i].length; j++)
+               {
+                   // create a new cell
+                   var cell = newRow.insertCell(j);
+                   
+                   // add value to the cell
+                   cell.innerHTML =result[i][j];
+               }
+           }
+        </script>
+        
+    </body>
+</html>
