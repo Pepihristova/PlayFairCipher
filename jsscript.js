@@ -1,14 +1,12 @@
-
-		function ShowTable(){
+function ShowTable(){
 			var table=document.getElementById("table");
 			table.style.display = 'block';
 			var form=document.getElementById("form");
 			form.style.display = 'none';
 			var key_word=document.getElementById("key_word").value;
+      var cipher_word=document.getElementById("cipher_word").value;
 			var ArrayFileName = key_word.split('');
-			var cipher_word=document.getElementById("cipher_word").value;
-			var ArrayCipherName = cipher_word.split('');
-			console.log(ArrayCipherName);
+			
 	
 
 var ArrayFileNameWExt = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -32,7 +30,7 @@ for (var i = 0; i < ArrayFileNameWExt.length; ++i) {
     }
 }
 
-console.log(FinalArray);
+//console.log(FinalArray);
 
 function chunkArray(myArray, chunk_size){
     var results = [];
@@ -46,10 +44,9 @@ function chunkArray(myArray, chunk_size){
 
 // Split in group of 5 items
 var result = chunkArray(FinalArray, 5);
-console.log(result);
+//console.log(result);
 
-var cipher_result = chunkArray(ArrayCipherName, 2);
-console.log(cipher_result);
+
             
             var 
                 table = document.getElementById("table");
@@ -68,5 +65,60 @@ console.log(cipher_result);
                    cell.innerHTML =result[i][j];
                }
            }
+
+
+
+            
+var cipher_word_array = cipher_word.split('');
+console.log(cipher_word_array);
+
+for (var k = 0; k < cipher_word_array.length; k++) {
+  if (cipher_word_array[k] === cipher_word_array[k+1]) {
+    cipher_word_array.splice(k +1, 0, "x");
+    //console.log(cipher_word_array)
+  }
+}
+
+var cipher_word_chunked = chunkArray(cipher_word_array, 2);
+
+console.log(cipher_word_chunked);
+
+for(var g = 0; g < cipher_word_chunked.length; g++){
+  //console.log(cipher_word_chunked[g]);
+  new_word = cipher_word_chunked[g];
+  for (var s = 0; s < new_word.length; s++) {
+    console.log(new_word[s]);
+    var innerIndex;
+var indexOfRemainingArray = result.findIndex(function(sub) {
+   innerIndex = sub.indexOf(new_word[s]);
+   return innerIndex !== -1;
+});
+
+console.log(indexOfRemainingArray, innerIndex);
+  }
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
            }
-      
+
+
+          
