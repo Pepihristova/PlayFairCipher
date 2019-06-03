@@ -84,17 +84,28 @@ var cipher_word_chunked = chunkArray(cipher_word_array, 2);
 console.log(cipher_word_chunked);
 
 for(var g = 0; g < cipher_word_chunked.length; g++){
-  //console.log(cipher_word_chunked[g]);
+  console.log(cipher_word_chunked[g]);
   new_word = cipher_word_chunked[g];
   for (var s = 0; s < new_word.length; s++) {
-    console.log(new_word[s]);
+   // console.log(new_word[s]);
     var innerIndex;
 var indexOfRemainingArray = result.findIndex(function(sub) {
    innerIndex = sub.indexOf(new_word[s]);
    return innerIndex !== -1;
 });
-
-console.log(indexOfRemainingArray, innerIndex);
+var column = indexOfRemainingArray;
+var row = innerIndex;
+//console.log(indexOfRemainingArray, innerIndex);
+if (column!= row) {
+console.log(column, row);
+var new_column = row;
+var new_row = column;
+//console.log(column, row);
+//console.log(new_column, new_row);
+}else{
+  console.log(new_word[s])
+}
+//console.log(column, row)
   }
  
 }
