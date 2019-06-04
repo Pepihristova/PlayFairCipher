@@ -70,7 +70,7 @@ var result = chunkArray(FinalArray, 5);
 
             
 var cipher_word_array = cipher_word.split('');
-console.log(cipher_word_array);
+//console.log(cipher_word_array);
 
 for (var k = 0; k < cipher_word_array.length; k++) {
   if (cipher_word_array[k] === cipher_word_array[k+1]) {
@@ -81,10 +81,10 @@ for (var k = 0; k < cipher_word_array.length; k++) {
 
 var cipher_word_chunked = chunkArray(cipher_word_array, 2);
 
-console.log(cipher_word_chunked);
+//console.log(cipher_word_chunked);
 
 for(var g = 0; g < cipher_word_chunked.length; g++){
-  console.log(cipher_word_chunked[g]);
+  //console.log(cipher_word_chunked[g]);
   new_word = cipher_word_chunked[g];
   for (var s = 0; s < new_word.length; s++) {
    // console.log(new_word[s]);
@@ -97,13 +97,13 @@ var column = indexOfRemainingArray;
 var row = innerIndex;
 //console.log(indexOfRemainingArray, innerIndex);
 if (column!= row) {
-console.log(column, row);
+//console.log(column, row);
 var new_column = row;
 var new_row = column;
 //console.log(column, row);
-//console.log(new_column, new_row);
+console.log(result[new_column][new_row]);
 }else{
-  console.log(new_word[s])
+  //console.log(new_word[s])
 }
 //console.log(column, row)
   }
