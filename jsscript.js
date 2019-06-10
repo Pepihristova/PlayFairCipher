@@ -4,7 +4,7 @@ function ShowTable(){
 			var form=document.getElementById("form");
 			form.style.display = 'none';
 			var key_word=document.getElementById("key_word").value;
-      var cipher_word=document.getElementById("cipher_word").value;
+      var cipher_word_first=document.getElementById("cipher_word").value;
 			var ArrayFileName = key_word.split('');
 			
 	
@@ -66,70 +66,81 @@ var result = chunkArray(FinalArray, 5);
                }
            }
 
+console.log(cipher_word_first);
 
+var cipher_word_array = cipher_word_first.split('');
+console.log(cipher_word_array);
 
-            
-var cipher_word_array = cipher_word.split('');
-//console.log(cipher_word_array);
 
 for (var k = 0; k < cipher_word_array.length; k++) {
   if (cipher_word_array[k] === cipher_word_array[k+1]) {
     cipher_word_array.splice(k +1, 0, "x");
     //console.log(cipher_word_array)
+    var cipher_word = cipher_word_array.join('');
   }
 }
 
-var cipher_word_chunked = chunkArray(cipher_word_array, 2);
-
-//console.log(cipher_word_chunked);
-
-for(var g = 0; g < cipher_word_chunked.length; g++){
-  //console.log(cipher_word_chunked[g]);
-  new_word = cipher_word_chunked[g];
-  for (var s = 0; s < new_word.length; s++) {
-   // console.log(new_word[s]);
-    var innerIndex;
-var indexOfRemainingArray = result.findIndex(function(sub) {
-   innerIndex = sub.indexOf(new_word[s]);
-   return innerIndex !== -1;
-});
-var column = indexOfRemainingArray;
-var row = innerIndex;
-//console.log(indexOfRemainingArray, innerIndex);
-if (column!= row) {
-//console.log(column, row);
-var new_column = row;
-var new_row = column;
-//console.log(column, row);
-console.log(result[new_column][new_row]);
-}else{
-  //console.log(new_word[s])
-}
-//console.log(column, row)
+var t = [];
+  var final_result = '';
+for(var l = 0; l < cipher_word.length; l += 2){
+    var cripting_two_letters_odd = cipher_word[l];
+    var cripting_two_letters_even = cipher_word[l + 1];
+    console.log(cripting_two_letters_odd,  cripting_two_letters_even)
+    var odd_x, odd_y, even_x, even_y;
+    for(var p = 0; p < result.length; p++) {
+      for(var h = 0; h < result[p].length; h++){
+        if (result[p][h] == cripting_two_letters_odd){
+          odd_x = p;
+          odd_y = h;
+        }
+        if (result[p][h] == cripting_two_letters_even){
+          even_x = p;
+          even_y = h;
+        }
+      }
+    }
+    console.log(odd_x, odd_y, even_x, even_y  )
+    var coordinates_first = '', coordinates_second = '';
+    
+    if(odd_x === even_x) {
+      if(odd_y === 4) {
+        coordinates_first = result[odd_x][0];
+      }
+      else {
+        coordinates_first = result[odd_x][odd_y + 1];
+      }
+      if(even_y === 4) {
+        coordinates_second = result[even_x][0];
+      }
+      else {
+        coordinates_second = result[even_x][even_y + 1]
+      }
+    }
+    if(odd_x === even_y) {
+      if(odd_x === 4) {
+        coordinates_first = result[0][odd_y];
+      }
+      else {
+        coordinates_first = result[odd_x + 1][odd_y];
+      }
+      if(even_x === 4) {
+        coordinates_second = result[0][even_y];
+      }
+      else {
+        coordinates_second = result[even_x + 1][even_y]
+      }
+    }
+    if(odd_x !== even_x && odd_y !== even_y) {
+      coordinates_first = result[odd_x][even_y];
+      coordinates_second = result[even_x][odd_y];
+    }
+    final_result = final_result + coordinates_first + coordinates_second;
   }
- 
+  document.getElementById("print").innerHTML = final_result;
+  return final_result;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-           }
 
 
           
