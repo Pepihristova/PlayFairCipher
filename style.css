@@ -1,0 +1,14 @@
+body{
+	background-image: url("images/background.jpg");
+  background-repeat: repeat-y;
+  color: #fff;
+  text-align: center;
+  font-size: 40px;
+}
+table{
+	border: 20px;
+	text-align: center;
+	position: relative;
+	left: 45%;
+	margin-top: 160px;
+}

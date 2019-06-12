@@ -1,13 +1,13 @@
 function ShowTable(){
-			var table=document.getElementById("table");
-			table.style.display = 'block';
-			var form=document.getElementById("form");
-			form.style.display = 'none';
-			var key_word=document.getElementById("key_word").value;
+      var table=document.getElementById("table");
+      table.style.display = 'block';
+      var form=document.getElementById("form");
+      form.style.display = 'none';
+      var key_word=document.getElementById("key_word").value;
       var cipher_word_first=document.getElementById("cipher_word").value;
-			var ArrayFileName = key_word.split('');
-			
-	
+      var ArrayFileName = key_word.split('');
+      
+  
 
 var ArrayFileNameWExt = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var FinalArray = [];
@@ -77,6 +77,8 @@ for (var k = 0; k < cipher_word_array.length; k++) {
     cipher_word_array.splice(k +1, 0, "x");
     //console.log(cipher_word_array)
     var cipher_word = cipher_word_array.join('');
+  }else{
+    var cipher_word = cipher_word_array.join('');
   }
 }
 
@@ -140,7 +142,3 @@ for(var l = 0; l < cipher_word.length; l += 2){
   return final_result;
 }
 
-
-
-
-          
