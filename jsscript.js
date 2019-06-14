@@ -1,24 +1,33 @@
 function ShowTable(){
+  String.prototype.trimAll = function() {
+return this.replace(/\s+/g,"");
+}
       var table=document.getElementById("table");
       table.style.display = 'block';
       var form=document.getElementById("form");
       form.style.display = 'none';
-      var key_word=document.getElementById("key_word").value;
-      var cipher_word_first=document.getElementById("cipher_word").value;
-      var ArrayFileName = key_word.split('');
-      
-  
+      var key_word1=document.getElementById("key_word").value;
+      key_word = key_word1.trimAll().toLowerCase();  
+      var cipher_word_first1=document.getElementById("cipher_word").value;
+     cipher_word_first = cipher_word_first1.trimAll().toLowerCase();    
+      var ArrayKeyName = key_word.split('');
+      for (var t = 0; t < ArrayKeyName.length; t++) {
+         if (ArrayKeyName[t] === 'j') {
+          //console.log('ima j')
+          ArrayKeyName[t] = 'i';
+         }
+      }
 
-var ArrayFileNameWExt = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var ArrayKeyNameWExt = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var FinalArray = [];
 
-var unique = [...new Set(ArrayFileName)];
-for (var i = 0; i < ArrayFileNameWExt.length; ++i) {
-    var temp = ArrayFileNameWExt[i];
+var unique = [...new Set(ArrayKeyName)];
+for (var i = 0; i < ArrayKeyNameWExt.length; ++i) {
+    var temp = ArrayKeyNameWExt[i];
     var found = false;
     
-    for (var j = 0; j < ArrayFileName.length; ++j) {
-        if (ArrayFileName[j] === temp[0]) {
+    for (var j = 0; j < ArrayKeyName.length; ++j) {
+        if (ArrayKeyName[j] === temp[0]) {
             found = true;
             break;
         }
@@ -26,7 +35,7 @@ for (var i = 0; i < ArrayFileNameWExt.length; ++i) {
     
     if (!found) {
       FinalArray = unique;
-        FinalArray.push(ArrayFileNameWExt[i]);
+        FinalArray.push(ArrayKeyNameWExt[i]);
     }
 }
 
@@ -70,7 +79,12 @@ console.log(cipher_word_first);
 
 var cipher_word_array = cipher_word_first.split('');
 console.log(cipher_word_array);
-
+for (var w = 0; w < cipher_word_array.length; w++) {
+         if (cipher_word_array[w] === 'j') {
+          //console.log('ima j')
+          cipher_word_array[w] = 'i';
+         }
+      }
 
 for (var k = 0; k < cipher_word_array.length; k++) {
   if (cipher_word_array[k] === cipher_word_array[k+1]) {
@@ -138,7 +152,7 @@ for(var l = 0; l < cipher_word.length; l += 2){
     }
     final_result = final_result + coordinates_first + coordinates_second;
   }
-  document.getElementById("print").innerHTML = final_result;
+  document.getElementById("print").innerHTML = 'Your new word is: ' +final_result;
   return final_result;
 }
 
